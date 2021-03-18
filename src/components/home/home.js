@@ -1,11 +1,13 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 function Home() {
     return (
         <div>
             Hey there fraands
-            <button>Login</button>
-            <button>Signup</button>
+            <br />
+            <Link to="/login">Login</Link>
+            <br />
+            <Link to="/signup">Signup</Link>
         </div>
     )
 }
