@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Navbar from './Navbar'
 function dashboard() {
     return (
         <div>
-            Dashboard
+            <Navbar />
         </div>
     )
 }
