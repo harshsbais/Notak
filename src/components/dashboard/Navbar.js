@@ -12,7 +12,7 @@ function Navbar() {
                 <Link to="#" className='menu-bars'>
                     <FaIcons.FaBars style={{ color: '#fff' }} onClick={(e) => setSidebar(true)} />
                 </Link>
-                <input type="text" className="mx-auto" placeholder="   &#xF002;   Search" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none' }} />
+                <input type="text" className="mx-auto" placeholder="   &#xF002;   Search" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none', padding: '10px' }} />
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items'>
