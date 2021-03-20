@@ -1,5 +1,4 @@
 import Routes from "./Routes";
-import Home from './components/home/home'
 import './App.css'
 function App() {
   return (
