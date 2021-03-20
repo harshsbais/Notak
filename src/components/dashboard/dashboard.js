@@ -8,6 +8,12 @@ function Dashboard() {
     const handleChange = (e) => {
         setList({ ...list, [e.target.name]: e.target.value })
     }
+    const deleteList = (id) => {
+        console.log('object')
+        let l = lists;
+        l = l.filter(lis => lis.time !== id);
+        setLists(l);
+    }
     const closeModal = () => {
         setModalShow(false);
         if (list.content) {
@@ -44,6 +50,7 @@ function Dashboard() {
                                 {l.content}<br />
                                 {l.author}<br />
                                 {l.time}<br />
+                                <Button onClick={(e) => deleteList(l.time)} style={{ background: 'none', border: 'none' }}><i style={{ color: 'red' }} className="fa fa-trash"></i></Button>
                             </Col>
                         )
                     })}
