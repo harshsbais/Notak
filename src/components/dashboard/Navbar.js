@@ -13,6 +13,7 @@ function Navbar() {
                     <FaIcons.FaBars style={{ color: '#fff' }} onClick={(e) => setSidebar(true)} />
                 </Link>
                 <input type="text" className="mx-auto" placeholder="   &#xF002;   Search" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none', padding: '10px' }} />
+                <i style={{ color: 'white', marginRight: '20px' }} className="fa fa-user"></i>
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items'>
