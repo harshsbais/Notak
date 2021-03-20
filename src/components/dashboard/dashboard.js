@@ -26,7 +26,6 @@ function Dashboard() {
     }
     return (
         <div div className="dashboard" >
-            {console.log(modalShow)}
             <Modal show={modalShow} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Note</Modal.Title>
@@ -36,19 +35,16 @@ function Dashboard() {
                 </Modal.Body>
             </Modal >
             <Navbar />
-            <input type="text" className="mx-auto" onClick={(e) => setModalShow(true)} placeholder="   Type" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none', padding: '10px' }} />
+            <input type="text" value={''} onChange={(e) => setModalShow(true)} className="mx-auto" onClick={(e) => setModalShow(true)} placeholder="   Type" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none', padding: '10px' }} />
             <center>
                 <Row>
-                    {lists.map((l, idx) => {
+                    {lists.map((l) => {
                         return (
-                            <>
-                                <Col lg={3} style={{ boxShadow: 'rgba(0, 0, 0, 0.3) 1px 1px 6px 2px', margin: '10px' }}>
-                                    {l.content}<br />
-                                    {l.author}<br />
-                                    {l.time}<br />
-                                    <Button style={{ background: 'none', border: 'none' }}><i style={{ color: 'red' }} className="fa fa-trash"></i></Button>
-                                </Col>
-                            </>
+                            <Col lg={3} style={{ boxShadow: 'rgba(0, 0, 0, 0.3) 1px 1px 6px 2px', margin: '10px' }}>
+                                {l.content}<br />
+                                {l.author}<br />
+                                {l.time}<br />
+                            </Col>
                         )
                     })}
                 </Row>
