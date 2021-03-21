@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-function signup() {
+function SignUp() {
     return (
         <div>
-            Signup
+            SignUp
             <br />
             <Link to="/dashboard">Dash</Link>
         </div>
     )
 }
 
-export default signup
+export default SignUp

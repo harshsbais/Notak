@@ -1,0 +1,104 @@
+.login {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.login {
+  /* background-image: url(../../assets/Path.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  min-height: 100vh;
+  max-height: 100%;
+}
+
+.login .top-head {
+  color: #504f4f;
+  font-size: 34px;
+  font-weight: 800;
+  padding-top: 20%;
+}
+
+.login .form-label {
+  color: #434343;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.login .form-control {
+  border: 1px solid #6e6e6e !important;
+  font-size: 14px !important;
+  color: #434343 !important;
+}
+
+.login .form-control::placeholder {
+  font-size: 12px !important;
+  color: #434343 !important;
+  opacity: 68% !important;
+}
+
+.login a {
+  text-decoration: none;
+  color: red !important;
+}
+
+.login .forgot {
+  margin-left: 69%;
+  color: #434343;
+  font-size: 12px;
+}
+
+.login .forgot:hover {
+  color: #434343;
+}
+
+.login .btn-login {
+  color: white;
+  background-color: #ff394d;
+  border-radius: 4px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.login .btn-login:hover {
+  color: white;
+}
+
+.login .signup {
+  font-size: 12px;
+  color: #434343;
+}
+
+.login .signup-a {
+  color: #ff394d;
+}
+
+.login .signup-a:hover {
+  color: #ff394d;
+}
+
+@media screen and (min-width: 1440px), screen and (min-height: 900px) {
+  .login .top-head {
+    padding-top: 30%;
+  }
+}
+
+@media screen and (min-width: 1920px), screen and (min-height: 1080px) {
+  .login .top-head {
+    padding-top: 57%;
+  }
+}
+
+.go-back {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  color: #ff394d;
+  font-size: 35px;
+}
