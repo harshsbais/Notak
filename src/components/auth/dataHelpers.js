@@ -5,3 +5,8 @@ export const performLogin = async (user) => {
     const response = await axios.post(API._login, user);
     return response;
 }
+
+export const performSignup = async (user) => {
+    const response = await axios.post(API._login, user);
+    return response;
+}

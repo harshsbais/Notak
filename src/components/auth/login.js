@@ -28,6 +28,15 @@ export const Login = (props) => {
             .then(async res => {
                 console.log(res);
                 bake_cookie("refresh", res.data.refresh);
+                history.push('/dashboard');
+            })
+            .catch((err) => {
+                console.log(err)
+                setUtils({
+                    loading: false,
+                    success: false,
+                    error: err.response.detail
+                })
             })
     }
 
