@@ -47,7 +47,7 @@ export const Login = (props) => {
                                 <Link to="/password-reset" class="forgot">Forgot password?</Link>
                             </div>
                             <Link to='/dashboard'><button type="submit" class="btn btn-login mt-3" disabled={Utils.loading}>{Utils.loading ? 'Loading..' : 'Login'}</button></Link>
-                            <p class="signup text-center pt-2">Not a member? &nbsp;<Link to="/register" class="signup-a">Signup</Link></p>
+                            <p class="signup text-center pt-2">Not a member? &nbsp;<Link to="/signup" class="signup-a">Signup</Link></p>
                         </form>
                     </div>
                     <div class="col-lg-4"></div>
