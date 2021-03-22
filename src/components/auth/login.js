@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Link, Redirect, useHistory } from 'react-router-dom';
-// import { performLogin, tokenKey } from './dataHelpers';
+import { performLogin } from './dataHelpers';
+import { read_cookie, bake_cookie } from 'sfcookies';
 import './Login.css'
 
 export const Login = (props) => {
     const history = useHistory();
-    const [UserDetails, setUserDetails] = useState({
-        username: "hardikhere",//hardikhere
-        email: "web.hardikhere@gmail.com",//web.hardikhere@gmail.com
-        password: "hardik009"//hardik009   will removeLater
+    const [userDetails, setUserDetails] = useState({
+        email: 'abcd@edfg.com',
+        password: '12345678@!'
     });
     const [Utils, setUtils] = useState({
         loading: false,
@@ -17,9 +17,18 @@ export const Login = (props) => {
     })
     const handleChange = (event) => {
         setUserDetails({
-            ...UserDetails,
+            ...userDetails,
             [event.target.name]: event.target.value
         });
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(userDetails);
+        performLogin(userDetails)
+            .then(async res => {
+                console.log(res);
+                bake_cookie("refresh", res.data.refresh);
+            })
     }
 
     return (
@@ -34,19 +43,19 @@ export const Login = (props) => {
                                 Utils.error && <div style={{ color: "red" }}>{Utils.error.non_field_errors ? Utils.error.non_field_errors : Utils.error.email}</div>
                             }
                         </div>
-                        <form class="mt-5">
+                        <form class="mt-5" onSubmit={handleSubmit}>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Your Email Address</label>
                                 <input type="email" name="email" class="form-control" placeholder="Eg: abhisjain1508@gmail.com"
-                                    id="exampleInputEmail1" onChange={handleChange} value={UserDetails.email} />
+                                    id="exampleInputEmail1" onChange={handleChange} value={userDetails.email} />
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                 <input type="password" name="password" onChange={handleChange} class="form-control" placeholder="* * * * * * *"
-                                    id="exampleInputPassword1" value={UserDetails.password} />
+                                    id="exampleInputPassword1" value={userDetails.password} />
                                 <Link to="/password-reset" class="forgot">Forgot password?</Link>
                             </div>
-                            <Link to='/dashboard'><button type="submit" class="btn btn-login mt-3" disabled={Utils.loading}>{Utils.loading ? 'Loading..' : 'Login'}</button></Link>
+                            <button type="submit" class="btn btn-login mt-3" disabled={Utils.loading}>{Utils.loading ? 'Loading..' : 'Login'}</button>
                             <p class="signup text-center pt-2">Not a member? &nbsp;<Link to="/signup" class="signup-a">Signup</Link></p>
                         </form>
                     </div>
