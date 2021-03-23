@@ -33,7 +33,7 @@ export const Login = (props) => {
             .then(async res => {
                 console.log(res);
                 bake_cookie("refresh", res.data.refresh);
-                dispatch(getToken())
+                dispatch(getToken({ payload: res.data.access }))
                 history.push('/dashboard');
             })
             .catch((err) => {
