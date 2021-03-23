@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { performSignup } from './dataHelpers';
-import { read_cookie, bake_cookie } from 'sfcookies';
+import { Toast } from 'react-bootstrap';
 import './Login.css'
 
 export const SignUp = (props) => {
-    const history = useHistory();
     const [userDetails, setUserDetails] = useState({});
+    const [alert, setAlert] = useState(false);
+    const [failureAlert, setFailureAlert] = useState(false);
     const [Utils, setUtils] = useState({
         loading: false,
         success: false,
@@ -24,11 +25,11 @@ export const SignUp = (props) => {
         performSignup(userDetails)
             .then(async res => {
                 console.log(res);
-                bake_cookie("refresh", res.data.refresh);
-                history.push('/dashboard');
+                setAlert(true);
             })
             .catch((err) => {
                 console.log(err)
+                setFailureAlert(true);
                 setUtils({
                     loading: false,
                     success: false,
@@ -39,6 +40,12 @@ export const SignUp = (props) => {
 
     return (
         <div className="login">
+            <Toast style={{ float: 'right', backgroundColor: '#f34636', color: 'white' }} onClose={() => setFailureAlert(false)} show={failureAlert} delay={3000} autohide>
+                <Toast.Body>Some Error Occured</Toast.Body>
+            </Toast>
+            <Toast style={{ float: 'right', backgroundColor: '#52af50', color: 'white' }} onClose={() => setAlert(false)} show={alert} delay={3000} autohide>
+                <Toast.Body>Verification E-mail sent</Toast.Body>
+            </Toast>
             <div class="wrapper overflow-hidden">
                 <div class="row">
                     <div class="col-lg-5"></div>
