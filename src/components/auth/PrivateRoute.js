@@ -1,11 +1,26 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { getAccessToken } from './dataHelpers';
+import { useSelector, useDispatch } from 'react-redux';
 import { getToken } from '../../Redux'
+import { read_cookie, bake_cookie } from 'sfcookies';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const accessToken = useSelector(state => state.accessToken)
+    const dispatch = useDispatch();
+    console.log(accessToken)
+    if (!accessToken) {
+        const refreshToken = read_cookie("refresh")
+        getAccessToken({ 'refresh': refreshToken })
+            .then(async res => {
+                bake_cookie("refresh", res.data.refresh);
+                dispatch(getToken({ payload: res.data.access }))
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
     console.log(accessToken);
     return (
         <Route

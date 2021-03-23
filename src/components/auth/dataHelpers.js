@@ -11,3 +11,8 @@ export const performSignup = async (user) => {
     const response = await axios.post(API._signup, user);
     return response;
 }
+
+export const getAccessToken = async (refreshToken) => {
+    const response = await axios.post(API._refresh, refreshToken);
+    return response;
+}
