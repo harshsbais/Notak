@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 function Home() {
     return (
         <div>
-            Hey there fraands
-            <br />
-            <Link to="/login">Login</Link>
-            <br />
-            <Link to="/signup">Signup</Link>
+            <center><h1>NotesApp</h1>
+                <br />
+                <h3>Let's revolutionise note taking</h3>
+                <Link to="/login">Login</Link>
+                <br />
+                <Link to="/signup">Signup</Link>
+            </center>
         </div>
     )
 }
