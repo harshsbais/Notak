@@ -10,7 +10,7 @@ export const Login = (props) => {
     const accessToken = useSelector(state => state.accessToken)
     const dispatch = useDispatch()
     const history = useHistory();
-    if (accessToken)
+    if (accessToken.length > 0)
         history.push('/dashboard')
     const [userDetails, setUserDetails] = useState({
         email: 'abcd@edfg.com',

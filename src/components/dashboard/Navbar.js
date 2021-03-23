@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { delete_cookie } from 'sfcookies';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
 import './Navbar.css'
+import { getToken } from '../../Redux'
 function Navbar() {
+    const dispatch = useDispatch()
     const history = useHistory();
     const [sidebar, setSidebar] = useState(false);
     const handleLogout = async () => {
         console.log('object')
         await delete_cookie("refresh")
+        dispatch(getToken({ payload: "" }))
         history.push('/')
     }
     return (
