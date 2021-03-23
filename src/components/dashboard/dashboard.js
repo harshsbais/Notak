@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Modal, Row, Col, Button, Toast } from 'react-bootstrap';
 import Navbar from './Navbar'
-function Dashboard() {
+import { useSelector } from 'react-redux';
+function Dashboard(props) {
+    const accessToken = useSelector(state => state.accessToken)
     const [modalShow, setModalShow] = useState(false);
     const [lists, setLists] = useState([]);
     const [list, setList] = useState({});
@@ -32,7 +34,8 @@ function Dashboard() {
         }
     }
     return (
-        <div div className="dashboard" >
+        <diV className="dashboard" >
+            { console.log(accessToken)}
             <Modal show={modalShow} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Note</Modal.Title>
@@ -60,8 +63,8 @@ function Dashboard() {
                     })}
                 </Row>
             </center>
-        </div >
+        </diV>
     )
 }
 
-export default Dashboard
+export default Dashboard;

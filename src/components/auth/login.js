@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import { performLogin } from './dataHelpers';
-import { read_cookie, bake_cookie } from 'sfcookies';
+import { bake_cookie } from 'sfcookies';
+import { getToken } from '../../Redux'
 import './Login.css'
 
 export const Login = (props) => {
+    const accessToken = useSelector(state => state.accessToken)
+    const dispatch = useDispatch()
     const history = useHistory();
     const [userDetails, setUserDetails] = useState({
         email: 'abcd@edfg.com',
@@ -21,6 +25,7 @@ export const Login = (props) => {
             [event.target.name]: event.target.value
         });
     }
+    console.log(accessToken)
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(userDetails);
@@ -28,15 +33,11 @@ export const Login = (props) => {
             .then(async res => {
                 console.log(res);
                 bake_cookie("refresh", res.data.refresh);
+                dispatch(getToken())
                 history.push('/dashboard');
             })
             .catch((err) => {
                 console.log(err)
-                setUtils({
-                    loading: false,
-                    success: false,
-                    error: err.response.detail
-                })
             })
     }
 
@@ -79,4 +80,6 @@ export const Login = (props) => {
         </div>
     )
 }
+
+
 export default Login;
