@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { delete_cookie } from 'sfcookies';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
 import './Navbar.css'
 function Navbar() {
+    const history = useHistory();
     const [sidebar, setSidebar] = useState(false);
+    const handleLogout = async () => {
+        console.log('object')
+        await delete_cookie("refresh")
+        history.push('/')
+    }
     return (
         <>
             <div className="nav">
@@ -13,7 +21,7 @@ function Navbar() {
                     <FaIcons.FaBars style={{ color: '#fff' }} onClick={(e) => setSidebar(true)} />
                 </Link>
                 <input type="text" className="mx-auto" placeholder="   &#xF002;   Search" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none', padding: '10px' }} />
-                <i style={{ color: 'white', marginRight: '20px' }} className="fa fa-user"></i>
+                <Button style={{ background: 'none', border: 'none' }} onClick={handleLogout}><i style={{ color: 'white', marginRight: '20px' }} className="fa fa-user"></i></Button>
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items'>

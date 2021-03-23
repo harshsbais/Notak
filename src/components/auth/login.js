@@ -10,6 +10,8 @@ export const Login = (props) => {
     const accessToken = useSelector(state => state.accessToken)
     const dispatch = useDispatch()
     const history = useHistory();
+    if (accessToken)
+        history.push('/dashboard')
     const [userDetails, setUserDetails] = useState({
         email: 'abcd@edfg.com',
         password: '12345678@!'
@@ -40,7 +42,6 @@ export const Login = (props) => {
                 console.log(err)
             })
     }
-
     return (
         <div className="login">
             <div class="wrapper overflow-hidden">
