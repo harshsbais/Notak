@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { performLogin } from './dataHelpers';
-import { bake_cookie } from 'sfcookies';
+import { bake_cookie, read_cookie } from 'sfcookies';
+import { getAccessToken } from './dataHelpers';
 import { getToken } from '../../Redux'
 import './Login.css'
 
@@ -10,6 +11,17 @@ export const Login = (props) => {
     const accessToken = useSelector(state => state.accessToken)
     const dispatch = useDispatch()
     const history = useHistory();
+    if (!accessToken) {
+        const refreshToken = read_cookie("refresh")
+        getAccessToken({ 'refresh': refreshToken })
+            .then(async res => {
+                bake_cookie("refresh", res.data.refresh);
+                dispatch(getToken({ payload: res.data.access }))
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
     if (accessToken && accessToken.payload.length > 0)
         history.push('/dashboard')
     const [userDetails, setUserDetails] = useState({
