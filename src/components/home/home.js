@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Home() {
     return (
         <div>
-            <center><h1>NotesApp</h1>
+            <center><h1>Notak</h1>
                 <br />
                 <h3>Let's revolutionise note taking</h3>
                 <Link to="/login">Login</Link>
