@@ -27,7 +27,7 @@ function Navbar() {
                 <input type="text" className="mx-auto" placeholder="   &#xF002;   Search" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none', padding: '10px' }} />
                 <Button style={{ background: 'none', border: 'none' }} onClick={handleLogout}><i style={{ color: 'white', marginRight: '20px' }} className="fa fa-user"></i></Button>
             </div>
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+            <nav style={{ zIndex: "1" }} className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items'>
                     <li className='navbar-toggle' >
                         <Link to="#" className='menu-bars'>
