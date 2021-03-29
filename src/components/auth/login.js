@@ -57,33 +57,33 @@ export const Login = (props) => {
     }
     return (
         <div className="login">
-            <div class="wrapper overflow-hidden">
-                <div class="row">
-                    <div class="col-lg-5"></div>
-                    <div class="col-lg-3">
-                        <p class="top-head">Welcome Back</p>
+            <div className="wrapper overflow-hidden">
+                <div className="row">
+                    <div className="col-lg-5"></div>
+                    <div className="col-lg-3">
+                        <p className="top-head">Welcome Back</p>
                         <div>
                             {
                                 Utils.error && <div style={{ color: "red" }}>{Utils.error.non_field_errors ? Utils.error.non_field_errors : Utils.error.email}</div>
                             }
                         </div>
-                        <form class="mt-5" onSubmit={handleSubmit}>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Your Email Address</label>
-                                <input type="email" name="email" class="form-control" placeholder="Eg: abhisjain1508@gmail.com"
+                        <form className="mt-5" onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputEmail1" className="form-label">Your Email Address</label>
+                                <input type="email" name="email" className="form-control" placeholder="Eg: abhisjain1508@gmail.com"
                                     id="exampleInputEmail1" onChange={handleChange} value={userDetails.email} />
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" name="password" onChange={handleChange} class="form-control" placeholder="* * * * * * *"
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                                <input type="password" name="password" onChange={handleChange} className="form-control" placeholder="* * * * * * *"
                                     id="exampleInputPassword1" value={userDetails.password} />
-                                <Link to="/password-reset" class="forgot">Forgot password?</Link>
+                                <Link to="/password-reset" className="forgot">Forgot password?</Link>
                             </div>
-                            <button type="submit" class="btn btn-login mt-3" disabled={Utils.loading}>{Utils.loading ? 'Loading..' : 'Login'}</button>
-                            <p class="signup text-center pt-2">Not a member? &nbsp;<Link to="/signup" class="signup-a">Signup</Link></p>
+                            <button type="submit" className="btn btn-login mt-3" disabled={Utils.loading}>{Utils.loading ? 'Loading..' : 'Login'}</button>
+                            <p className="signup text-center pt-2">Not a member? &nbsp;<Link to="/signup" className="signup-a">Signup</Link></p>
                         </form>
                     </div>
-                    <div class="col-lg-4"></div>
+                    <div className="col-lg-4"></div>
                 </div>
                 <div className="go-back">
                     <Link to="/">
