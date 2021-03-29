@@ -9,7 +9,6 @@ import { read_cookie, bake_cookie } from 'sfcookies';
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const accessToken = useSelector(state => state.accessToken)
     const dispatch = useDispatch();
-    console.log(accessToken)
     if (!accessToken) {
         const refreshToken = read_cookie("refresh")
         getAccessToken({ 'refresh': refreshToken })
@@ -21,7 +20,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                 console.log(err)
             })
     }
-    console.log(accessToken);
     return (
         <Route
             {...rest}

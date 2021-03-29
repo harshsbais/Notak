@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Row, Col, Button, Toast } from 'react-bootstrap';
 import Navbar from './Navbar'
-import { useSelector } from 'react-redux';
 function Dashboard(props) {
-    const accessToken = useSelector(state => state.accessToken)
     const [modalShow, setModalShow] = useState(false);
     const [lists, setLists] = useState([]);
     const [list, setList] = useState({});
@@ -34,7 +32,7 @@ function Dashboard(props) {
         }
     }
     return (
-        <diV className="dashboard" >
+        <div className="dashboard" >
             <Modal show={modalShow} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Note</Modal.Title>
@@ -49,7 +47,6 @@ function Dashboard(props) {
             </Toast>
             <input type="text" value={''} onChange={(e) => setModalShow(true)} className="mx-auto" onClick={(e) => setModalShow(true)} placeholder="   Type" style={{ width: '50vw', height: '5vh', fontFamily: 'Arial, FontAwesome', outline: 'none', padding: '10px' }} />
             <center>
-                {(accessToken.payload)}
                 <Row>
                     {lists.map((l) => {
                         return (
@@ -63,7 +60,7 @@ function Dashboard(props) {
                     })}
                 </Row>
             </center>
-        </diV>
+        </div>
     )
 }
 

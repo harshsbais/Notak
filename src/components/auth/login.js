@@ -52,6 +52,7 @@ export const Login = (props) => {
             })
             .catch((err) => {
                 console.log(err)
+                setUtils(err);
             })
     }
     return (
